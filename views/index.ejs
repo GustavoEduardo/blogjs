@@ -1,0 +1,55 @@
+
+<%- include('partials/head.ejs'); -%>
+<%- include('partials/homenavbar.ejs'); -%>
+<%- include('partials/navcategories.ejs'); -%>
+
+	<div class="jumbotron pb-1 pt-5">
+	  <h2 class="display-4">Bem vindo ao Blog</h2>
+	  <p class="lead">Este blog tem o objetivo de informar os programadores do Brasil</p>
+	  <hr class="my-4">
+	  <p>leia e aprenda sobre os principais assuntos do mundo da programaçãoe tecnologia.</p>
+	  <p class="lead">
+	    <a class="btn btn-success btn-lg" href="#" role="button">Learn more</a>
+	  </p>
+
+	</div>
+
+	<div style="color: #444; text-align: center; margin-bottom: 2em;">
+		<hr>
+		<h3>Artigos mais Recentes</h3>
+		<hr>
+	</div>
+	
+
+	<div class="container">
+		<div class="row">
+			<% articles.forEach(article => { %>
+			<div class="col-md-6">
+				<div class="card bg-light">
+					<div class="card-header">
+						<h3><%= article.title %></h3>
+						
+					</div>
+					<div class="card-body ">
+						<a style="float: right;" href="/article/<%=article.slug%>" class="btn btn-outline-success">Ver mais</a>					
+					</div>
+				</div>
+				<br>
+			</div>	
+
+			<% }) %>
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				<a style="float: right; margin-bottom: 1em; font-weight: bold;" href="/articles/page/2">Mais Artigos >>></a>
+				
+			</div>
+		</div>
+		
+
+	</div>
+
+
+
+<%- include('partials/footer.ejs'); -%>

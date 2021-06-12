@@ -1,0 +1,43 @@
+<%- include('../../partials/head.ejs'); -%>
+
+<%- include('../../partials/navbar.ejs'); -%>
+
+
+	<div class="container">
+		<br>
+		<div class="card">
+			<div class="card-header">
+				<h2>Novo Artigo</h2>
+			</div>
+			<div class="card-body">
+				<form method="post" action="/articles/save">
+					<input class="form-control" type="text" name="title" placeholder="Defina o titulo do Artigo">
+					<br>
+					<textarea id="article" class="form-control" placeholder="Escreva o artigo aqui" name="body"></textarea>
+					<br>
+					<select name="category" class="form-control">
+						<% categories.forEach(category =>{ %>
+							<option value="<%=category.id%>"><%=category.title%></option>
+
+						<% }); %>
+					</select>
+					<br>
+					<button class="btn btn-success">Cadastrar</button>
+				</form>
+			</div>		
+		</div>
+	</div>
+
+
+<%- include('../../partials/footer.ejs'); -%>
+
+<script src="/tinymce/tinymce.min.js"></script><!--Importando editor na pasta public-->
+<script>//configurando tynymce
+	tinymce.init({
+		language: 'pt_BR',//baixar em https://www.tiny.cloud/get-tiny/language-packages/ e colar na pasta langs
+		selector: "#article",//id da textarea a ser utilizada
+		plugins: [
+			'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons'
+		]//plugins com mais funcionalidades
+	})
+</script>

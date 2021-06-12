@@ -1,0 +1,35 @@
+<%- include('../../partials/head.ejs'); -%>
+
+<%- include('../../partials/navbar.ejs'); -%>	
+
+	<div class="container">
+		<br>
+		<div class="card ">
+			<div class="card-header">
+				<h2>Cadastro de Novo Usuario</h2>
+			</div>
+			<div class="card-body">
+				<form method="post" action="/users/create">
+					<div class="row">
+						<span style="font-size: 1.2em; font-weight: bold;" class="col-md-1">Nome:</span>
+						<input class="form-control col-md-6" type="text" name="name" placeholder="Defina o nome">
+					</div>
+					<br>
+					<div class="row">
+						<span style="font-size: 1.2em; font-weight: bold;" class="col-md-1">Login:</span>
+						<input class="form-control col-md-6" type="text" name="login" placeholder="Defina o login">
+					</div>
+					<br>
+					<div class="row">
+						<span style="font-size: 1.2em; font-weight: bold;" class="col-md-1">Senha:</span>
+						<input class="form-control col-md-6" type="password" name="password" placeholder="************">
+					</div>
+					<br>		
+									
+					<button class="btn btn-success btn-block">Cadastrar</button>
+				</form>
+			</div>		
+		</div>
+	</div>	
+
+<%- include('../../partials/footer.ejs'); -%>

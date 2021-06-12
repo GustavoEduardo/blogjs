@@ -1,0 +1,45 @@
+
+<%- include('../../partials/head.ejs'); -%>
+<%- include('../../partials/homenavbar.ejs'); -%>
+<%- include('../../partials/navcategories.ejs'); -%>
+
+<br>
+
+	<div class="container">
+		<div class="row">
+			<% result.articles.rows.forEach(article => { %><!-- findAndCountAll retorna linhas por isso o .rows-->
+			<div class="col-md-6">
+				<div class="card bg-light">
+					<div class="card-header">
+						<h3><%= article.title %></h3>
+						
+					</div>
+					<div class="card-body ">
+						<a href="/article/<%=article.slug%>" class="btn btn-outline-success">Ver mais</a>					
+					</div>
+				</div>
+				<br>
+			</div>	
+
+			<% }) %>
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				<% if(result.next) { %>
+				<a style="float: right; margin-bottom: 1em; font-weight: bold;" href="/articles/page/<%=result.page+1%>">Próximo >>></a>
+				<% } %>
+
+				<% if(result.page != 1) { %>
+				<a style="float: left; margin-bottom: 1em; font-weight: bold;" href="/articles/page/<%=result.page-1%>"><<< Anterior</a>
+				<% } %>
+				
+			</div>
+		</div>
+		
+
+	</div>
+
+
+
+<%- include('../../partials/footer.ejs'); -%>

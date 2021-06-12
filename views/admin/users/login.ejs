@@ -1,0 +1,30 @@
+<%- include('../../partials/head.ejs'); -%>
+
+<%- include('../../partials/homenavbar.ejs'); -%>	
+
+	<div class="container">
+		<br>
+		<div class="card ">
+			<div class="card-header">
+				<h2>Login</h2>
+			</div>
+			<div class="card-body">
+				<form method="post" action="/authenticate">
+					<div class="row">
+						<span style="font-size: 1.2em; font-weight: bold;" class="col-md-1">Login:</span>
+						<input class="form-control col-md-6" type="text" name="login" placeholder="Informe o login">
+					</div>
+					<br>
+					<div class="row">
+						<span style="font-size: 1.2em; font-weight: bold;" class="col-md-1">Senha:</span>
+						<input class="form-control col-md-6" type="password" name="password" placeholder="************">
+					</div>
+					<br>		
+									
+					<button class="btn btn-success btn-block">Login</button>
+				</form>
+			</div>		
+		</div>
+	</div>	
+
+<%- include('../../partials/footer.ejs'); -%>

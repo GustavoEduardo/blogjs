@@ -1,0 +1,59 @@
+
+<%- include('../../partials/head.ejs'); -%>
+
+<%- include('../../partials/navbar.ejs'); -%>
+	
+	<div class="container">
+		<hr>
+		<h2>Artigos</h2>
+		<a class="btn btn-success" href="/admin/articles/new">Cadastrar novo Artigo</a>
+		<hr>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Titulo</th>
+					<th>Slug</th>
+					<th>Categoria</th>
+					<th>Ações</th>
+				</tr>
+
+			</thead>
+			<tbody>
+				
+				<% articles.forEach(article => { %>
+					<tr>
+						<td><%= article.id %></td>
+						<td><%= article.title %></td>
+						<td><%= article.slug %></td>
+						<td><%= article.category.title %></td><!--Join no findAll-->
+						<td>
+							<a href="/admin/articles/edit/<%= article.id%>" class="btn btn-warning mr-2">Editar</a>
+							<form style="display: inline;" method="post" action="/articles/delete" onsubmit="confirmaExclusao(event,this)"><!--usando form para enviar via post. event sempre existe nos eventos js e this é o objeto que chama a função, que nesse caso é o formulario-->
+								<input type="hidden" name="id" value="<%= article.id %>">
+								<button class="btn btn-danger">Apagar</button>
+							</form>
+							
+						</td>
+					</tr>
+
+				<% }) %>
+			</tbody>
+			
+		</table>	
+	</div>
+
+
+<%- include('../../partials/footer.ejs'); -%>
+
+<script>
+	
+	function confirmaExclusao(event, form){
+		event.preventDefault();//não executa o evento.
+		var decision = confirm("Quer mesmo deletar esse artigo?");//Caixa com opção ok ou cancelar
+		if(decision){
+			form.submit();
+		}
+	}
+
+</script>
